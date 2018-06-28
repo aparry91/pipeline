@@ -1,6 +1,3 @@
-def userInput = true
-def didTimeout = false
-
 pipeline {
     agent any
     stages {
@@ -15,30 +12,18 @@ pipeline {
                 script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
-                        userInput = input('')
+                            input 'Test'
                         }
                     } catch(err) {
-                          if('SYSTEM' == user.toString()) {
-                              didTimeout = true
-                              echo 'Timed out'
+                        long timePassed = System.currentTimeMillis() - startTime
+                        if (timePassed >= timeoutInSeconds * 1000) {
+                            echo 'Timed Out'
                           } else {
-                              userInput = false
-                              echo "Aborted."
+                              throw err
                           }
                     }
-
-        node {
-            if (didTimeout) {
-                echo "no input was received before timeout"
-            } else if (userInput == true) {
-                echo "this was successful"
-            } else {
-                echo "this was not successful"
-                currentBuild.result = 'FAILURE'
+                }
             }
         }
-        }
     }
-}
-}
 }
