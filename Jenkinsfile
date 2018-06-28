@@ -15,17 +15,17 @@ pipeline {
                 script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
-                        userInput = input('Proceed true or false')
+                        userInput = input('')
                         }
                     } catch(err) {
-                      if('SYSTEM' == user.toString()) {
-                          didTimeout = true
-                          echo 'Timed out'
-                      } else {
-                          userInput = false
-                          echo "Aborted.]"
-            }
-        }
+                          if('SYSTEM' == user.toString()) {
+                              didTimeout = true
+                              echo 'Timed out'
+                          } else {
+                              userInput = false
+                              echo "Aborted."
+                          }
+                    }
 
         node {
             if (didTimeout) {
