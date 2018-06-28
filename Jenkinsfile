@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'echo Hello World'
             }
+        }
         } 
 
         stage('Approve') {
@@ -19,6 +20,5 @@ pipeline {
             }
         }
     } 
-}
 }
 }
