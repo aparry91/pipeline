@@ -10,15 +10,15 @@ pipeline {
         stage('Approve') {
             steps {
                 script {
-                    try {
-                        timeout(time: 10, unit: 'SECONDS') {
-                        input ''
-                    } catch (Exception err) {
-                        throw err
-                    }
-                }
-             }
-         }
-      }
-   }
+                try {
+                    timeout(time: 10, unit: 'SECONDS') {
+                    input ''
+                } catch (Exception err) {
+                    throw err
+                }    
+            }
+        }
+    } 
+}
+}
 }
