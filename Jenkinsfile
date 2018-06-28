@@ -1,4 +1,4 @@
-def testInput = false
+def testInput = true
 
 pipeline {
     agent any
