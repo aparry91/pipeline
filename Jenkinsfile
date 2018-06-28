@@ -9,7 +9,6 @@ pipeline {
 
         stage('Approve') {
             steps {
-                script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
                             input 'Test'
@@ -21,7 +20,6 @@ pipeline {
                           } else {
                               throw err
                           }
-                    }
                 }
             }
         }
