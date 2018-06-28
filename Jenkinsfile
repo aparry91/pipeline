@@ -14,7 +14,7 @@ pipeline {
                         timeout(time: 10, unit: 'SECONDS') {
                             input 'Test'
                     }
-                    } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+                    } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException, e) {
                         print 'Failed'
                         }
                     }
