@@ -9,8 +9,18 @@ pipeline {
 
         stage('Approve') {
             steps {
-                sh 'echo Approve'
+                script {
+                    try {
+                        timeout(time: 10, unit: 'SECONDS') {
+                            input 'Test'
+                    } catch (err) {
+                        if ('SYSTEM' == user.toString()) {
+                            echo 'Timed Out'
+                        }
+                    }
+                }
             }
         }
     }
+}
 }
