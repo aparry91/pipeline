@@ -12,7 +12,7 @@ pipeline {
                 script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
-                        input ...
+                        input ''
                     } catch (err) {
                         throw err
                     }
