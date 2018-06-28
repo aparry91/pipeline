@@ -12,7 +12,7 @@ pipeline {
                 script {
                     timeout(time: 20, unit: 'SECONDS') {
                     input 'Proceed yes or no'
-                    if (currentBuild.result = 'FAILURE'){
+                    if (currentBuild.result == 'FAILURE'){
                         currentBuild.result = 'SUCCESS'
                     }
                 }
