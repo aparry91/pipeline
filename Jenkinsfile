@@ -9,19 +9,16 @@ pipeline {
 
         stage('Approve') {
             steps {
+                script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
-                            input 'Test'
-                        }
-                    } catch(err) {
-                        long timePassed = System.currentTimeMillis() - startTime
-                        if (timePassed >= timeoutInSeconds * 1000) {
-                            echo 'Timed Out'
-                          } else {
-                              throw err
-                          }
+                        input ...
+                    } catch (err) {
+                        throw err
+                    }
                 }
-            }
-        }
-    }
+             }
+         }
+      }
+   }
 }
