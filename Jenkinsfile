@@ -15,14 +15,11 @@ pipeline {
                             input 'Test'
                     }
                     } catch (err) {
-                        def user = err.getCauses()[0].getUser()
-                        if ('SYSTEM' == user.toString()) {
-                            echo 'Timed Out'
+                        print (err)
                         }
                     }
                 }
             }
         }
     }
-}
 
