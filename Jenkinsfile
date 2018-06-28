@@ -15,10 +15,7 @@ pipeline {
                 script {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
-                            userInput = input(
-                            id: 'Proceed1', message: 'Was this successful?', parameters: [
-                            [$class: '$BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please can you confirm that you agree with this']
-                            ])
+                            userInput = input('Proceed true or false')
                     }
                 } catch(err) {
                       def user = err.getCauses()[0].getUser()
