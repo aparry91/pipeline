@@ -13,7 +13,7 @@ pipeline {
                     try {
                         timeout(time: 10, unit: 'SECONDS') {
                         input ''
-                    } catch (err) {
+                    } catch (Exception err) {
                         throw err
                     }
                 }
