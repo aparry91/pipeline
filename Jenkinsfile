@@ -1,3 +1,5 @@
+def testInput = true
+
 pipeline {
     agent any
     stages {
@@ -9,7 +11,12 @@ pipeline {
 
         stage('Approve') {
             steps {
-                sh 'echo Approve'
+                script {
+                    if (testInput == true) {
+                        sh echo 'Skipping this step'
+                    } else {
+                        timeout(time: 20, unit: 'SECONDS') {
+                        input 'Proceed yes or no'
             }
         }
     }
