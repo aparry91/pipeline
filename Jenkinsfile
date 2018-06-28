@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     if (testInput == true) {
-                        sh echo 'Skipping this step'
+                        echo 'Skipping this step'
                     } else {
                         timeout(time: 20, unit: 'SECONDS') {
                         input 'Proceed yes or no'
